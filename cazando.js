@@ -5,6 +5,7 @@ let gatoX = 0;
 let gatoY = 0;
 let comidaX = 0;
 let comidaY = 0;
+let puntaje = 0;
 const ALTO_GATO = 80;
 const ANCHO_GATO = 120;
 const ALTO_COMIDA = 40;
@@ -38,35 +39,30 @@ function graficarRectangulo(x, y, ancho, alto, color){
 }
 
 function moverIzquierda(){
-    gatoX-=10;
-    limpiarCanva();
-    graficarGato();
-    graficarComida();
-    detectarColision();
+  gatoX-=10;
+  actualizarPantalla();
 }
 
 function moverDerecha(){
-    gatoX+=10;
-    limpiarCanva();
-    graficarGato();
-    graficarComida();
-    detectarColision();
+  gatoX+=10;
+  actualizarPantalla();
 }
 
 function moverArriba(){
-    gatoY-=10;
-    limpiarCanva();
-    graficarGato();
-    graficarComida();
-    detectarColision();
+  gatoY-=10;
+  actualizarPantalla();
 }
 
 function moverAbajo(){
-    gatoY+=10;
-    limpiarCanva();
-    graficarGato();
-    graficarComida();
-    detectarColision();
+  gatoY+=10;
+  actualizarPantalla();
+}
+
+function actualizarPantalla(){
+  limpiarCanva();
+  graficarGato();
+  graficarComida();
+  detectarColision();
 }
 
 function detectarColision(){
@@ -76,5 +72,14 @@ function detectarColision(){
         && comidaY < gatoY + ALTO_GATO
     ){
         alert("ATRAPADO!")
+        puntaje += 1;
+        mostrarEnSpan("puntos", puntaje)
+        aparecerComida();
     }     
+}
+
+function aparecerComida(){
+  comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
+  comidaY = generarAleatorio(0, canvas.height - ALTO_COMIDA);
+  actualizarPantalla();
 }
