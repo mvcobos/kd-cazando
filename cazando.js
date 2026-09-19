@@ -1,26 +1,25 @@
 let canvas = document.getElementById("areaJuego");
 let ctx = canvas.getContext("2d");
 let context = canvas.getContext("2d");
-let gatoX = 0;
-let gatoY = 0;
-let comidaX = 0;
-let comidaY = 0;
-let puntaje = 0;
+
 const ALTO_GATO = 80;
 const ANCHO_GATO = 120;
 const ALTO_COMIDA = 40;
 const ANCHO_COMIDA = 60;
+
+let gatoX = canvas.width/2 - ANCHO_GATO/2;
+let gatoY = canvas.height/2 - ALTO_GATO/2;
+let comidaX = canvas.width-ANCHO_COMIDA;
+let comidaY = canvas.height-ALTO_COMIDA;
+let puntaje = 0;
+let tiempo = 10;
 
 function limpiarCanva() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
 
 function iniciarJuego() {
-  gatoX = canvas.width/2 - ANCHO_GATO/2;
-  gatoY = canvas.height/2 - ALTO_GATO/2;
-  comidaX = canvas.width-ANCHO_COMIDA;
-  comidaY = canvas.height-ALTO_COMIDA;
-
+  setInterval(restarTiempo, 1000); //1P: funcion 2P: tiempo en milisegundos
   graficarGato();
   graficarComida();
 }
@@ -82,4 +81,9 @@ function aparecerComida(){
   comidaX = generarAleatorio(0, canvas.width - ANCHO_COMIDA);
   comidaY = generarAleatorio(0, canvas.height - ALTO_COMIDA);
   actualizarPantalla();
+}
+
+function restarTiempo(){
+  tiempo -= 1;
+  mostrarEnSpan("tiempo", tiempo);
 }
