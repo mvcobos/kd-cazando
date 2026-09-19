@@ -7,8 +7,8 @@ let comidaX = 0;
 let comidaY = 0;
 const ALTO_GATO = 80;
 const ANCHO_GATO = 120;
-const ALTO_COMIDA = 80;
-const ANCHO_COMIDA = 120;
+const ALTO_COMIDA = 40;
+const ANCHO_COMIDA = 60;
 
 function limpiarCanva() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -42,6 +42,7 @@ function moverIzquierda(){
     limpiarCanva();
     graficarGato();
     graficarComida();
+    detectarColision();
 }
 
 function moverDerecha(){
@@ -49,6 +50,7 @@ function moverDerecha(){
     limpiarCanva();
     graficarGato();
     graficarComida();
+    detectarColision();
 }
 
 function moverArriba(){
@@ -56,6 +58,7 @@ function moverArriba(){
     limpiarCanva();
     graficarGato();
     graficarComida();
+    detectarColision();
 }
 
 function moverAbajo(){
@@ -63,4 +66,15 @@ function moverAbajo(){
     limpiarCanva();
     graficarGato();
     graficarComida();
+    detectarColision();
+}
+
+function detectarColision(){
+    if(comidaX + ANCHO_COMIDA > gatoX
+        && comidaX < gatoX + ANCHO_GATO
+        && comidaY + ALTO_COMIDA > gatoY 
+        && comidaY < gatoY + ALTO_GATO
+    ){
+        alert("ATRAPADO!")
+    }     
 }
