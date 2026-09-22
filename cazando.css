@@ -1,42 +1,337 @@
-body {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background: #f0f0f0;
-  margin: 0;
-  padding: 20px;
+/* ============================================================
+   Juego Cazando — estética "ocean fantasy / soft mermaid"
+   Paleta obligatoria (con variaciones de luminosidad para texto
+   y profundidad). Efectos usados con criterio: gradientes suaves,
+   glassmorphism, sombras elegantes y burbujas discretas.
+   ============================================================ */
+
+:root {
+  /* Tipografías */
+  --fuente-titulo: 'Quicksand', 'Segoe UI', system-ui, sans-serif;
+  --fuente-texto: 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+
+  /* Paleta base */
+  --crema:       #FFF9D2;
+  --durazno:     #FFEBCC;
+  --azul-claro:  #BFDDF0;
+  --azul:        #8CC0EB;
+  --verde-claro: #D8FFC5;
+  --verde:       #C4F7CA;
+
+  /* Variaciones de luminosidad (mismos tonos, más oscuros) para texto */
+  --tinta:       #23536E;   /* texto principal */
+  --tinta-suave: #567B90;
+  --azul-hondo:  #235F87;
+  --azul-tinta:  #1B4E75;
+  --verde-hondo: #1C5E3D;
+
+  /* Vidrio y sombras reutilizables */
+  --vidrio:        linear-gradient(180deg, rgba(255, 255, 255, .60), rgba(191, 221, 240, .40));
+  --borde-vidrio:  1px solid rgba(255, 255, 255, .60);
+  --luz-interna:   inset 0 1px 0 rgba(255, 255, 255, .85);
+  --sombra-profunda: 0 30px 60px -24px rgba(35, 80, 125, .45), 0 10px 22px -12px rgba(35, 80, 125, .28);
+  --sombra-suave:  0 8px 18px -12px rgba(35, 80, 125, .30);
+
+  /* Radios */
+  --r-lg: 26px;
+  --r-md: 18px;
+  --r-pill: 999px;
 }
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: clamp(16px, 4vw, 40px);
+  min-height: 100vh;
+  font-family: var(--fuente-texto);
+  color: var(--tinta);
+  position: relative;
+  overflow-x: hidden;
+  /* Océano: luz cálida arriba, agua azul con reflejos verdes */
+  background:
+    radial-gradient(120% 80% at 50% -12%, rgba(255, 249, 210, .55), transparent 55%),
+    radial-gradient(85% 60% at 12% 22%, rgba(196, 247, 202, .30), transparent 60%),
+    radial-gradient(90% 70% at 88% 82%, rgba(140, 192, 235, .45), transparent 60%),
+    linear-gradient(180deg, #C9E6F5 0%, #A9D0EE 45%, #8CC0EB 100%);
+}
+
+/* ============================================================
+   Decoración acuática (rayos de luz + burbujas)
+   ============================================================ */
+.olas {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Rayos de luz suaves atravesando el agua */
+.rayo {
+  position: absolute;
+  top: -12%;
+  width: 200px;
+  height: 130%;
+  filter: blur(10px);
+  opacity: .45;
+  background: linear-gradient(180deg, rgba(255, 249, 210, .35), transparent 72%);
+}
+.rayo--1 { left: 16%; transform: rotate(11deg); }
+.rayo--2 { left: 62%; transform: rotate(9deg); opacity: .32; }
+
+/* Burbujas que suben lentamente */
+.burbuja {
+  position: absolute;
+  bottom: -60px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, .55);
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .85), rgba(191, 221, 240, .25) 70%);
+  opacity: .5;
+  animation: subir linear infinite;
+}
+.burbuja--1 { width: 26px; height: 26px; left: 12%; animation-duration: 17s; }
+.burbuja--2 { width: 16px; height: 16px; left: 28%; animation-duration: 22s; animation-delay: 3s; }
+.burbuja--3 { width: 34px; height: 34px; left: 68%; animation-duration: 19s; animation-delay: 1s; }
+.burbuja--4 { width: 20px; height: 20px; left: 82%; animation-duration: 24s; animation-delay: 5s; }
+.burbuja--5 { width: 12px; height: 12px; left: 48%; animation-duration: 15s; animation-delay: 2s; }
+
+@keyframes subir {
+  0%   { transform: translateY(0) translateX(0);      opacity: 0; }
+  12%  { opacity: .5; }
+  50%  { transform: translateY(-55vh) translateX(14px); }
+  90%  { opacity: .5; }
+  100% { transform: translateY(-112vh) translateX(0);  opacity: 0; }
+}
+
+/* ============================================================
+   Escena (columna central con jerarquía y buen espaciado)
+   ============================================================ */
+.escena {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(.5rem, 2vw, 1rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+  text-align: center;
+}
+
+/* ============================================================
+   Título y autor
+   ============================================================ */
+.cabecera { margin-bottom: .2rem; }
 
 h1 {
-  margin-bottom: 5px;
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: clamp(1.9rem, 5.5vw, 2.7rem);
+  letter-spacing: .3px;
+  /* Degradado azul → turquesa (variaciones oscuras de la paleta) */
+  color: var(--azul-hondo);
+  background: linear-gradient(180deg, #245F88, #1E7A6F);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
+.autor {
+  margin: .35rem 0 0;
+  font-size: .9rem;
+  font-weight: 600;
+  color: var(--tinta);
+  opacity: .75;
+}
+
+/* ============================================================
+   Panel de marcadores (tarjetas de vidrio)
+   ============================================================ */
 .panel {
-  margin: 15px 0;
-  font-size: 18px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 30px;
+  gap: 1rem;
+  margin: 0;
 }
 
+.stat {
+  padding: .6rem 1.3rem;
+  border-radius: var(--r-md);
+  background: var(--vidrio);
+  border: var(--borde-vidrio);
+  box-shadow: var(--luz-interna), var(--sombra-suave);
+  font-weight: 600;
+  color: var(--tinta);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+.stat #puntos,
+.stat #tiempo {
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1.2em;
+}
+#puntos { color: var(--verde-hondo); }
+#tiempo { color: var(--azul-hondo); }
+
+/* ============================================================
+   Marco del área de juego (protagonista, con profundidad)
+   ============================================================ */
+.marco-juego {
+  max-width: 100%;
+  padding: 14px;
+  border-radius: var(--r-lg);
+  background: linear-gradient(160deg, rgba(255, 255, 255, .55), rgba(191, 221, 240, .35));
+  border: var(--borde-vidrio);
+  box-shadow: var(--sombra-profunda), var(--luz-interna);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* El canvas conserva su tamaño interno (600x400); solo se adapta en pantalla */
 canvas {
-  background: white;
-  border: 2px solid black;
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--r-md);
+  /* Fondo acuático tenue por si el juego no pinta el suyo */
+  background: linear-gradient(180deg, #FFFFFF 0%, #EAF6FF 100%);
+  box-shadow: inset 0 2px 12px rgba(35, 80, 125, .15);
 }
 
-.controles {
-  margin-top: 20px;
-}
-
-button {
-  margin: 5px;
-  padding: 10px 16px;
-  font-size: 18px;
-  cursor: pointer;
-}
-
+/* ============================================================
+   Mensaje (aparece solo cuando el JS le pone texto)
+   ============================================================ */
 #mensaje {
-  font-size: 20px;
-  font-weight: bold;
-  color: darkred;
-  margin-top: 15px;
+  margin: 0;
+  min-height: 1.2em;
+  font-family: var(--fuente-titulo);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: var(--azul-hondo);
+}
+#mensaje:not(:empty) {
+  display: inline-block;
+  padding: .55rem 1.4rem;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, .60);
+  border: var(--borde-vidrio);
+  box-shadow: var(--luz-interna), var(--sombra-suave);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+
+/* ============================================================
+   Controles (D-pad + reiniciar)
+   ============================================================ */
+.controles {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 62px);
+  grid-template-rows: repeat(3, 62px);
+  gap: .5rem;
+  justify-content: center;
+}
+.btn-arriba    { grid-column: 2; grid-row: 1; }
+.btn-izquierda { grid-column: 1; grid-row: 2; }
+.btn-abajo     { grid-column: 2; grid-row: 3; }
+.btn-derecha   { grid-column: 3; grid-row: 2; }
+
+/* Pequeño núcleo decorativo del D-pad */
+.dpad::after {
+  content: "";
+  grid-column: 2;
+  grid-row: 2;
+  align-self: center;
+  justify-self: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, var(--azul), var(--azul-claro));
+  opacity: .5;
+}
+
+/* Botones (base común) */
+button {
+  font-family: var(--fuente-texto);
+  cursor: pointer;
+  border: var(--borde-vidrio);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+}
+
+.btn-dir {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--azul-tinta);
+  border-radius: var(--r-md);
+  background: linear-gradient(180deg, var(--azul-claro), var(--azul));
+  box-shadow: var(--luz-interna), 0 8px 16px -8px rgba(35, 80, 125, .40);
+}
+.btn-dir:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: var(--luz-interna), 0 12px 22px -8px rgba(35, 80, 125, .45), 0 0 16px rgba(140, 192, 235, .45);
+}
+.btn-dir:active {
+  transform: translateY(0);
+  box-shadow: inset 0 3px 8px rgba(35, 80, 125, .30);
+}
+
+.btn-reiniciar {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--verde-hondo);
+  padding: .7rem 1.7rem;
+  border-radius: var(--r-pill);
+  background: linear-gradient(180deg, var(--verde-claro), var(--verde));
+  box-shadow: var(--luz-interna), 0 8px 18px -10px rgba(60, 140, 90, .40);
+}
+.btn-reiniciar:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+  box-shadow: var(--luz-interna), 0 12px 22px -10px rgba(60, 140, 90, .45), 0 0 16px rgba(196, 247, 202, .55);
+}
+.btn-reiniciar:active {
+  transform: translateY(0);
+  box-shadow: inset 0 3px 8px rgba(60, 140, 90, .25);
+}
+
+/* Foco visible con teclado (accesibilidad) */
+button:focus-visible {
+  outline: 3px solid var(--azul-hondo);
+  outline-offset: 3px;
+}
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+@media (max-width: 560px) {
+  .dpad {
+    grid-template-columns: repeat(3, 54px);
+    grid-template-rows: repeat(3, 54px);
+  }
+  .btn-dir { font-size: 1.3rem; }
+  .marco-juego { padding: 10px; border-radius: 22px; }
+  .rayo--2, .burbuja--4 { display: none; }
+}
+
+/* ============================================================
+   Preferencia del sistema: menos movimiento
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
 }

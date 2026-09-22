@@ -1,6 +1,5 @@
 let canvas = document.getElementById("areaJuego");
 let ctx = canvas.getContext("2d");
-let context = canvas.getContext("2d");
 
 const ALTO_GATO = 80;
 const ANCHO_GATO = 120;
@@ -20,9 +19,15 @@ function limpiarCanva() {
 }
 
 function iniciarJuego() {
-  intervaloTiempo = setInterval(restarTiempo, 1000); //1P: funcion 2P: tiempo en milisegundos
-  graficarGato();
-  graficarComida();
+    gatoX = canvas.width / 2 - ANCHO_GATO / 2;
+    gatoY = canvas.height / 2 - ALTO_GATO / 2;
+
+    comidaX = canvas.width - ANCHO_COMIDA;
+    comidaY = canvas.height - ALTO_COMIDA;
+
+    intervaloTiempo = setInterval(restarTiempo, 1000); //1P: funcion 2P: tiempo en milisegundos
+    graficarGato();
+    graficarComida();
 }
 
 function graficarGato() {

@@ -1,35 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Juego Cazando</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="cazando.css"/>
   <script src="utils.js"></script>
 </head>
 <body onload="iniciarJuego()">
 
-  <h1>Juego Cazando</h1>
-  <p>Autor: vcobs</p>
+  <!-- Decoración acuática (solo adorno, no interfiere con el juego) -->
+  <div class="olas" aria-hidden="true">
+    <span class="rayo rayo--1"></span>
+    <span class="rayo rayo--2"></span>
+    <span class="burbuja burbuja--1"></span>
+    <span class="burbuja burbuja--2"></span>
+    <span class="burbuja burbuja--3"></span>
+    <span class="burbuja burbuja--4"></span>
+    <span class="burbuja burbuja--5"></span>
+  </div>
 
-  <canvas id="areaJuego" width="600" height="400"></canvas>
-  <div class="controles">
-    <button onclick = "moverArriba()">⬆</button>
-    <br>
-    <button onclick = "moverIzquierda()">⬅</button>
-    <button onclick = "moverAbajo()">⬇</button>
-    <button onclick = "moverDerecha()">➡</button>
-    <div>
-      <button onclick = "reiniciar()">Reiniciar</button>
+  <main class="escena">
+    <header class="cabecera">
+      <h1>Juego Cazando</h1>
+      <p class="autor">Autor: vcobs</p>
+    </header>
+
+    <div class="panel">
+      <span class="stat">Puntos: <span id="puntos">0</span></span>
+      <span class="stat">Tiempo: <span id="tiempo">10</span></span>
     </div>
-  </div>
 
+    <div class="marco-juego">
+      <canvas id="areaJuego" width="600" height="400"></canvas>
+    </div>
 
+    <p id="mensaje"></p>
 
-  <div class="panel">
-    <span>Puntos: <span id="puntos">0</span></span>
-    <span>Tiempo: <span id="tiempo">10</span></span>
-  </div>
-
-  <p id="mensaje"></p>
+    <div class="controles">
+      <div class="dpad">
+        <button class="btn-dir btn-arriba"    onclick="moverArriba()">⬆</button>
+        <button class="btn-dir btn-izquierda" onclick="moverIzquierda()">⬅</button>
+        <button class="btn-dir btn-abajo"     onclick="moverAbajo()">⬇</button>
+        <button class="btn-dir btn-derecha"   onclick="moverDerecha()">➡</button>
+      </div>
+      <button class="btn-reiniciar" onclick="reiniciar()">Reiniciar</button>
+    </div>
+  </main>
 
   <script src="cazando.js"></script>
 </body>
