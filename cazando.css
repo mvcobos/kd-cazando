@@ -48,12 +48,17 @@ body {
   color: var(--tinta);
   position: relative;
   overflow-x: hidden;
-  /* Océano: luz cálida arriba, agua azul con reflejos verdes */
+  /* Océano: luz cálida arriba, agua azul con reflejos verdes, burbuja de fondo */
   background:
     radial-gradient(120% 80% at 50% -12%, rgba(255, 249, 210, .55), transparent 55%),
     radial-gradient(85% 60% at 12% 22%, rgba(196, 247, 202, .30), transparent 60%),
     radial-gradient(90% 70% at 88% 82%, rgba(140, 192, 235, .45), transparent 60%),
+    url("burbuja.png"),
     linear-gradient(180deg, #C9E6F5 0%, #A9D0EE 45%, #8CC0EB 100%);
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+  background-position: center, center, center, center, center;
+  background-size: cover, cover, cover, contain, cover;
+  background-attachment: fixed, fixed, fixed, fixed, fixed;
 }
 
 /* ============================================================

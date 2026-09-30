@@ -1,57 +1,144 @@
 Mi prompt inicial fue el siguiente (los colores los entregué
-mediante una paleta / imagen):
+mediante una imagen):
 
-"Dame un archivo css y html con el mismo estilo pero con estos
-colores: #FFEDB9, #FFCB56, #FFA259, #FF7E7E. Trata de incluir más
-protagonismo al rosado. Tipo un atardecer."
+"Rediseña visualmente mi juego web 'Cazando' (HTML + CSS) para que
+se vea más profesional y moderno, con una estética inspirada
+en el océano y las sirenas. Usa esta paleta: #FFF9D2, #FFEBCC,
+#BFDDF0, #8CC0EB, #D8FFC5, #C4F7CA. No modifiques el archivo JS."
 
 
 2. SOLICITUD DE MEJORA
 Después pedí que se mejorara y reescribiera ese prompt para que
-quedara más completo. Como parte del ajuste
-también dije que el resultado se veía demasiado chillón y que se
-suavizara, por lo que en el prompt mejorado la paleta pasó a tonos
-más pálidos.
+quedara más completo, con instrucciones claras sobre el
+estilo, la tipografía y el código.
 
-Ese prompt mejorado fue el
-que finalmente envié para generar los estilos del menú.
+Ese prompt mejorado fue el que finalmente envié para generar el
+rediseño del juego.
 
-3. PROMPT MEJORADO 
-Rediseña el menú de mi juego web (HTML + CSS) con estética de
-atardecer.
 
-Contexto: tengo una página sencilla que sirve de menú, con enlaces a
-distintos destinos (por ejemplo, mi juego y una web externa). Quiero
-convertirla en una landing bonita y pulida.
+3. PROMPT MEJORADO
+Quiero que rediseñes visualmente mi juego web para que tenga una
+apariencia mucho más profesional, moderna, bonita y pulida, pero sin
+que se vea sobrecargada.
 
-Requisitos:
-- Dame un archivo HTML y uno CSS (sin JavaScript ni librerías
-  externas).
-- Conserva los enlaces y sus destinos tal como están; solo cambia la
-  apariencia.
-- Estilo: atardecer ("sunset"), con el rosado como color
-  protagonista, elegante y no recargado.
+IMPORTANTE:
+- Puedes modificar el archivo HTML y el archivo CSS.
+- Si es estrictamente necesario, puedes hacer pequeños ajustes
+  estructurales en el HTML para mejorar el diseño.
+- NO MODIFIQUES EL ARCHIVO JS BAJO NINGUNA CIRCUNSTANCIA.
+- No cambies nombres de variables, funciones, IDs, clases o elementos
+  que el JavaScript necesite para funcionar.
+- No cambies la lógica, mecánicas, controles, posiciones funcionales
+  ni comportamiento del juego.
+- El resultado debe seguir funcionando exactamente igual que antes.
+- Si necesitas agregar clases CSS al HTML para aplicar estilos,
+  puedes hacerlo siempre que no interfiera con el JS.
+- Conserva todos los elementos funcionales existentes.
 
-Paleta de colores (úsala como base, con transparencias y variaciones
-de luminosidad, sin meter colores que rompan la armonía):
-#FF9A86, #FFB399, #FFD6A6, #FFF0BE, #FFF7CD, #FDC3A1, #FB9B8F,
-#F57799, #F0A8D0, #F7B5CA, #FFC6C6, #FFEBD4
+OBJETIVO VISUAL:
+Quiero que el juego tenga una estética inspirada en el océano, el mar
+y las sirenas, pero de manera elegante y sutil. Debe transmitir:
+- Frescura
+- Limpieza
+- Suavidad
+- Un ambiente acuático
+- Toques de fantasía tipo sirena
+- Diseño moderno de videojuego casual
+- Apariencia profesional y cuidada
 
-Que sea suave a la vista y poco saturado, nada chillón ni abrumador:
-tonos pálidos en las zonas grandes (cielo de fondo) y los más
-intensos solo en detalles.
+PALETA DE COLORES OBLIGATORIA:
+- #FFF9D2
+- #FFEBCC
+- #BFDDF0
+- #8CC0EB
+- #D8FFC5
+- #C4F7CA
 
-Efectos permitidos, con criterio (sin exagerar):
-- Cielo en degradado (rosa arriba -> durazno -> crema en el
-  horizonte).
-- Tarjeta central tipo vidrio (glassmorphism) con marmoleado,
-  iluminación y sombra suave.
-- Sol tenue, nubes y orbes difuminados de fondo, con brillos sutiles.
-- Botones glossy con degradado, hover, active y transiciones suaves.
+Usa estos colores como base principal. Puedes utilizar transparencias
+y variaciones de luminosidad de estos mismos colores cuando sea
+necesario, pero evita introducir colores que rompan la armonía de la
+paleta.
 
-Otros detalles:
-- Tipografía moderna y redondeada, priorizando legibilidad.
-- Diseño responsive (computadora, laptop, tablet y móvil).
-- CSS organizado, con variables para la paleta y sin repetir valores
-  innecesariamente.
-- Respeta la preferencia de "menos movimiento" del sistema.
+ESTILO:
+Quiero un diseño tipo "ocean fantasy / soft mermaid", no infantil
+excesivamente caricaturesco.
+
+Puedes utilizar de forma equilibrada:
+- Gradientes suaves
+- Sombras elegantes
+- Iluminación ambiental
+- Efectos de glow muy sutiles
+- Difuminados
+- Transparencias
+- Efecto glassmorphism cuando tenga sentido
+- Bordes redondeados
+- Sombras internas
+- Sombras externas
+- Efectos de profundidad
+- Brillos suaves
+- Gradientes radiales
+- Texturas marmoleadas o similares a ondas de agua
+- Efectos que recuerden a reflejos de luz sobre el agua
+- Pequeñas burbujas o elementos decorativos acuáticos únicamente si
+  no interfieren con el juego
+
+IMPORTANTE SOBRE LOS EFECTOS:
+No quiero que uses todos los efectos indiscriminadamente. Combínalos
+con criterio. La interfaz debe verse profesional y limpia, no como
+una demostración de CSS. Evita exceso de glow, exceso de gradientes,
+demasiadas sombras o demasiados elementos decorativos.
+
+COMPOSICIÓN:
+- Haz que el área principal del juego sea el elemento visual
+  protagonista.
+- Dale al canvas/contenedor una apariencia más elegante, con
+  profundidad y separación visual del fondo.
+- Crea un fondo agradable relacionado con el océano, utilizando
+  gradientes y/o efectos marmoleados suaves.
+- Si existe un título, marcador, instrucciones o botones,
+  rediseñalos para que formen parte de la misma identidad visual.
+- Mantén una jerarquía visual clara.
+- Aprovecha espacios, márgenes y padding correctamente.
+- Evita que todo quede pegado a los bordes.
+- El diseño debe sentirse equilibrado.
+
+TIPOGRAFÍA:
+Si ya existe una tipografía funcional, puedes mejorarla mediante CSS.
+Si necesitas incorporar una fuente externa, utiliza una fuente
+moderna, redondeada y elegante que combine con la temática marina,
+pero no uses una fuente excesivamente infantil. La legibilidad tiene
+prioridad.
+
+INTERFAZ:
+Si existen botones:
+- Hazlos modernos y agradables.
+- Usa estados hover y active.
+- Incluye transiciones suaves.
+- Puedes usar sombras y pequeños efectos de iluminación.
+- No hagas animaciones exageradas.
+
+Si existen paneles, tarjetas o marcadores:
+- Dales profundidad.
+- Usa transparencias y bordes suaves.
+- Mantén una estética coherente con el océano.
+
+RESPONSIVE:
+Asegúrate de que el diseño se vea bien en:
+- Computadora
+- Laptop
+- Tablet
+- Pantallas pequeñas
+
+No rompas el tamaño ni la funcionalidad del canvas.
+
+CÓDIGO:
+- Mantén el código CSS organizado y fácil de entender.
+- Agrupa estilos relacionados.
+- Usa variables CSS para la paleta de colores.
+- Evita repetir innecesariamente los mismos valores.
+- No utilices !important salvo que sea absolutamente necesario.
+- No agregues librerías JavaScript.
+- No agregues frameworks innecesarios.
+- No modifiques el JS.
+
+====================================================================
