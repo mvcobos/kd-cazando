@@ -1,0 +1,57 @@
+Mi prompt inicial fue el siguiente (los colores los entregué
+mediante una paleta / imagen):
+
+"Dame un archivo css y html con el mismo estilo pero con estos
+colores: #FFEDB9, #FFCB56, #FFA259, #FF7E7E. Trata de incluir más
+protagonismo al rosado. Tipo un atardecer."
+
+
+2. SOLICITUD DE MEJORA
+Después pedí que se mejorara y reescribiera ese prompt para que
+quedara más completo. Como parte del ajuste
+también dije que el resultado se veía demasiado chillón y que se
+suavizara, por lo que en el prompt mejorado la paleta pasó a tonos
+más pálidos.
+
+Ese prompt mejorado fue el
+que finalmente envié para generar los estilos del menú.
+
+3. PROMPT MEJORADO 
+Rediseña el menú de mi juego web (HTML + CSS) con estética de
+atardecer.
+
+Contexto: tengo una página sencilla que sirve de menú, con enlaces a
+distintos destinos (por ejemplo, mi juego y una web externa). Quiero
+convertirla en una landing bonita y pulida.
+
+Requisitos:
+- Dame un archivo HTML y uno CSS (sin JavaScript ni librerías
+  externas).
+- Conserva los enlaces y sus destinos tal como están; solo cambia la
+  apariencia.
+- Estilo: atardecer ("sunset"), con el rosado como color
+  protagonista, elegante y no recargado.
+
+Paleta de colores (úsala como base, con transparencias y variaciones
+de luminosidad, sin meter colores que rompan la armonía):
+#FF9A86, #FFB399, #FFD6A6, #FFF0BE, #FFF7CD, #FDC3A1, #FB9B8F,
+#F57799, #F0A8D0, #F7B5CA, #FFC6C6, #FFEBD4
+
+Que sea suave a la vista y poco saturado, nada chillón ni abrumador:
+tonos pálidos en las zonas grandes (cielo de fondo) y los más
+intensos solo en detalles.
+
+Efectos permitidos, con criterio (sin exagerar):
+- Cielo en degradado (rosa arriba -> durazno -> crema en el
+  horizonte).
+- Tarjeta central tipo vidrio (glassmorphism) con marmoleado,
+  iluminación y sombra suave.
+- Sol tenue, nubes y orbes difuminados de fondo, con brillos sutiles.
+- Botones glossy con degradado, hover, active y transiciones suaves.
+
+Otros detalles:
+- Tipografía moderna y redondeada, priorizando legibilidad.
+- Diseño responsive (computadora, laptop, tablet y móvil).
+- CSS organizado, con variables para la paleta y sin repetir valores
+  innecesariamente.
+- Respeta la preferencia de "menos movimiento" del sistema.
